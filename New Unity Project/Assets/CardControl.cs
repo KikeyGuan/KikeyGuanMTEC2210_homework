@@ -27,18 +27,18 @@ public class CardControl : MonoBehaviour
 
     void OnMouseDown()
     {
-        Debug.Log("click");
+        //Debug.Log("click");
     }
     void OnMouseOver()
     {
-        Debug.Log("Over");
+        //Debug.Log("Over");
     }
     void OnMouseDrag()
     {
         //mousePos = Input.mousePosition;
         gamemouse = cam.ScreenToWorldPoint(Input.mousePosition);
         transform.position = new Vector3(gamemouse.x, gamemouse.y, 0);
-        Debug.Log(gamemouse);
+        //Debug.Log(gamemouse);
     }
 
     /*

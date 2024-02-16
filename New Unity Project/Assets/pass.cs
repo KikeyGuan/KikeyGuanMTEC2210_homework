@@ -5,6 +5,7 @@ using UnityEngine;
 public class pass : MonoBehaviour
 {
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,13 +17,36 @@ public class pass : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         //swtich layer
+        //int block = LayerMask.NameToLayer("block");
+        //gameObject.layer = block;
+        //int allow = LayerMask.NameToLayer("allow");
+        //gameObject.layer = allow;
+        //gameObject.layer = 7;
+        //Debug.Log("hit0");
+        if (collision.gameObject.tag == "card"){
+            Debug.Log("hit");
+            gameObject.layer = 7;
+        }
+        else{
+            gameObject.layer = 6;
+        }
+        
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnCollisionExit2D(Collision2D collision)
     {
         //change back layers
+        Debug.Log("exit0");
+        gameObject.layer=6;
+        if (collision.gameObject.tag == "card"){
+            Debug.Log("exit");
+            gameObject.layer = 6;
+        }
+        else{
+            gameObject.layer = 7;
+        }
     }
 
 }
