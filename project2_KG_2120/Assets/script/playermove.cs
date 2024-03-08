@@ -12,7 +12,7 @@ public class playermove : MonoBehaviour
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private float playerSpeed = 6f;
-    private float jumpHeight = 1.0f;
+    //private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     Rigidbody rb;
     public Transform orientation;
