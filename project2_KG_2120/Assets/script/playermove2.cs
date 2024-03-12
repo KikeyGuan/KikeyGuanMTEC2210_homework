@@ -26,6 +26,8 @@ public class playermove2 : MonoBehaviour {
         if (controller.isGrounded) {
             Debug.Log("isGrounded");
             Debug.Log("movedirY: " + moveDirection.y);
+            oldY = 0f;
+            moveDirection.y = 0f;
             //Debug.Log("movedirX" + moveDirection.x);
             jumpcount = 0;
         }
@@ -38,11 +40,15 @@ public class playermove2 : MonoBehaviour {
                 //moveDirection = new Vector3(Input.GetAxis("Horizontal"), oldY, Input.GetAxis("Vertical"));
                 Debug.Log ("jumpcount: " + jumpcount);
         }
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), jumptestY, Input.GetAxis("Vertical")); //(x,y,z)
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); //(x,y,z)
         moveDirection = transform.TransformDirection(moveDirection);
+
         moveDirection *= speed;
-        oldY = oldY - (gravity * Time.deltaTime);
-        moveDirection.y = oldY + moveDirection.y;
+        if (!controller.isGrounded)
+        {
+            oldY = oldY - (gravity * Time.deltaTime);
+        }
+        moveDirection.y = oldY;
         //moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
     }
