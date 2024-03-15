@@ -24,8 +24,8 @@ public class playermove2 : MonoBehaviour {
         float jumptestY = 0;
         
         if (controller.isGrounded) {
-            Debug.Log("isGrounded");
-            Debug.Log("movedirY: " + moveDirection.y);
+            //Debug.Log("isGrounded");
+            //Debug.Log("movedirY: " + moveDirection.y);
             oldY = 0f;
             moveDirection.y = 0f;
             //Debug.Log("movedirX" + moveDirection.x);
