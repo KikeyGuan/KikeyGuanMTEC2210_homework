@@ -4,7 +4,9 @@ using System.Collections;
 //taken from unity documentation
 public class playermove2 : MonoBehaviour {
     private CharacterController controller;
-    public float speed = 5.0F;
+    public float speed = 6.0F;
+    public float fixedSpeed = 6.0f;
+    public float runSpeed = 1.0f;
     public float jumpSpeed = 5.0F;
     public float gravity = 9.8F;
     public Vector3 moveDirection = Vector3.zero;
@@ -42,7 +44,10 @@ public class playermove2 : MonoBehaviour {
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            moveDirection *= 2;
+            speed = runSpeed;
+        }
+        else {
+            speed = fixedSpeed;
         }
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); //(x,y,z)
         moveDirection = transform.TransformDirection(moveDirection);

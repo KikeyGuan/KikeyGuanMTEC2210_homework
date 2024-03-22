@@ -10,15 +10,17 @@ Material:
   m_Name: New Material 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 2100000, guid: 8a7df38f9bd364242a3d72e27d36bd3d, type: 2}
-  m_ModifiedSerializedProperties: 2
+  m_ModifiedSerializedProperties: 18
   m_ValidKeywords:
+  - _ALPHAPREMULTIPLY_ON
   - _EMISSION
   m_InvalidKeywords: []
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 3000
+  stringTagMap:
+    RenderType: Transparent
   disabledShaderPasses:
   - GRABPASS
   m_LockedProperties: 
@@ -26,7 +28,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _DstBlend: 10
+    - _Mode: 3
+    - _SrcBlend: 1
+    - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 0.34015664, g: 0.5277962, b: 0.7924528, a: 1}
+    - _Color: {r: 0.48393556, g: 0.64776605, b: 0.8207547, a: 0.7176471}
   m_BuildTextureStacks: []

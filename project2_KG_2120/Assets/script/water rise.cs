@@ -13,9 +13,9 @@ public class waterrise : MonoBehaviour
     public GameObject Capsule;
     public GameObject orientation;
     public GameObject cameraPos;
-    public Text UIText;
+    //public Text UIText;
     public float waterRise = 0.0001f;
-    public float waterStop;
+    public float waterStop = 2;
     public GameObject Text;
     public TextMeshPro deathText;
 
@@ -31,7 +31,7 @@ public class waterrise : MonoBehaviour
         cameraPos = GameObject.Find("cameraPos");
         Text = GameObject.Find("Text");
         deathText = Text.GetComponent<TextMeshPro>();
-        waterStop = GetComponent<Transform>().transform.position.y;
+        waterStop = gameObject.GetComponent<Transform>().transform.position.y;
         //UIText = Text.GetComponent<Text>();
         //UIText = GameObject.Find("Text");
         //playermove2 move= player.GetComponent<playermove2>().moveDirection;
@@ -52,12 +52,12 @@ public class waterrise : MonoBehaviour
         Debug.Log("game over");
 
         //Destroy(player);
-        player.GetComponent<playermove2>().moveDirection = new Vector3 (0,0,0);
+        //player.GetComponent<playermove2>().moveDirection = new Vector3 (0,0,0);
         deathText.text = "Game Over";
-
-        Destroy(Capsule);
-        Destroy(orientation);
-        Destroy(cameraPos);
+        player.GetComponent<playermove2>().speed = 0;
+        //Destroy(Capsule);
+        //Destroy(orientation);
+        //Destroy(cameraPos);
         
         StartCoroutine(deathtime());
         //SceneManager.LoadScene("SampleScene");
