@@ -40,6 +40,10 @@ public class playermove2 : MonoBehaviour {
                 //moveDirection = new Vector3(Input.GetAxis("Horizontal"), oldY, Input.GetAxis("Vertical"));
                 Debug.Log ("jumpcount: " + jumpcount);
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveDirection *= 2;
+        }
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); //(x,y,z)
         moveDirection = transform.TransformDirection(moveDirection);
 
