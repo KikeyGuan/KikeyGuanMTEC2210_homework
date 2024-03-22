@@ -7,7 +7,7 @@ public class playermove2 : MonoBehaviour {
     public float speed = 5.0F;
     public float jumpSpeed = 5.0F;
     public float gravity = 9.8F;
-    private Vector3 moveDirection = Vector3.zero;
+    public Vector3 moveDirection = Vector3.zero;
     private int jumpcount = 0;
     //public Transform target;
     //public Transform CamRotate;
