@@ -43,8 +43,8 @@ public class waterrise : MonoBehaviour
     {
         transform.Translate(0,waterRiseLevel,0);
         Debug.Log(waterStop);
-        if (waterStop ==2){
-            waterRiseLevel = 0;
+        if (transform.position.y <=16){
+            //waterRiseLevel = 0;
         }
         
     }
@@ -54,16 +54,18 @@ public class waterrise : MonoBehaviour
         //Destroy(player);
         //player.GetComponent<playermove2>().moveDirection = new Vector3 (0,0,0);
         deathText.text = "Game Over";
-        player.GetComponent<playermove2>().speed = 0;
+        //player.GetComponent<playermove2>().speed = 0;
         //Destroy(Capsule);
         //Destroy(orientation);
         //Destroy(cameraPos);
-        
+        Time. timeScale = 0;
         StartCoroutine(deathtime());
         //SceneManager.LoadScene("SampleScene");
+        
     }
     IEnumerator deathtime(){
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSecondsRealtime(3);
+        Time. timeScale = 1;
         SceneManager.LoadScene("SampleScene");
     }
 
