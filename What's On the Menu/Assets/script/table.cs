@@ -8,24 +8,60 @@ using UnityEngine.UI;
 
 public class table : MonoBehaviour
 {
-    public TextMeshPro tabletalk;
+    public TextMeshProUGUI tabletalk;
     public GameObject Text;
     public int next = 0;
     public bool water = false;
+    public bool inTrigger;
     // Start is called before the first frame update
     void Start()
     {
         Text = GameObject.Find("Text");
-        tabletalk = Text.GetComponent<TextMeshPro>();
+        tabletalk = Text.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown("z") && inTrigger == true)
+        {
+            next++;
+            Debug.Log(next);
+        }
+        if (next == 1)
+        {
+            tabletalk.text = "Take the water?";
+            if (Input.GetKeyDown("z"))
+            {
+                tabletalk.text = "You got water!";
+                water = true;
+                //add time to close the text
+            }
+            if (Input.GetKeyDown("x"))
+            {
+                water = false;
+                next = 0;
+                tabletalk.text = " ";
+            }
+            
+        }
+        if (next == 2)
+        {
+            tabletalk.text = " ";
+            next = 0;
+
+        }
     }
 
-    void OnCollisionStay2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            inTrigger = true;
+        }
+    }
+    /*
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -48,5 +84,12 @@ public class table : MonoBehaviour
             }
             
         }
+    }
+    */
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        inTrigger = false;
+
+        //Debug.Log("collision exit");
     }
 }
