@@ -7,14 +7,14 @@ using UnityEngine.UI;
 
 public class surived : MonoBehaviour
 {
-    public TextMeshPro surtalk;
+    public TextMeshProUGUI surtalk;
     public GameObject Text;
     public int next = 0;
     // Start is called before the first frame update
     void Start()
     {
         Text = GameObject.Find("Text");
-        surtalk = Text.GetComponent<TextMeshPro>();
+        //surtalk = Text.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame

@@ -21,8 +21,8 @@ public class guy : MonoBehaviour
     public GameObject table;
     public bool inTrigger;
 
-    //talk =z, yes = x, no = c maybe
-    //talk = z, yes = z, no = x
+    //talk =z, yes = x, no = c 
+ 
 
     // Start is called before the first frame update
     void Start()
@@ -68,14 +68,15 @@ public class guy : MonoBehaviour
             
             if (Input.GetKeyDown("x"))
             {
-                guytalk.text = "'Thankyou!'";
+                
+                StartCoroutine(wait1());
                 //wait seconds
                 next++;
             }
             if (Input.GetKeyDown("c"))
             {
-                guytalk.text = "OOhh noOo..";
-
+                
+                StartCoroutine(wait2());
                 next = 0;
             }
         }
@@ -97,8 +98,29 @@ public class guy : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         inTrigger = false;
+        guytalk.text = " ";
+        next = 0 ;
 
-        Debug.Log("collision exit");
+        //Debug.Log("collision exit");
+    }
+
+    IEnumerator wait1()
+    {
+
+        yield return new WaitForSecondsRealtime(0.1f);
+        guytalk.text = "'Thankyou!'";
+        yield return new WaitForSecondsRealtime(2);
+        //next ++;
+        guytalk.text = " ";
+    }
+    IEnumerator wait2()
+    {
+
+        yield return new WaitForSecondsRealtime(0.1f);
+        guytalk.text = "OOhh noOo..";
+        yield return new WaitForSecondsRealtime(2);
+        //next ++;
+        guytalk.text = " ";
     }
 
     /*

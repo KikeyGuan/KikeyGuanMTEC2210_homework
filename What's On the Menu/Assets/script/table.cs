@@ -26,18 +26,22 @@ public class table : MonoBehaviour
         if (Input.GetKeyDown("z") && inTrigger == true)
         {
             next++;
-            Debug.Log(next);
+            //Debug.Log(next);
         }
         if (next == 1)
         {
             tabletalk.text = "Take the water?";
-            if (Input.GetKeyDown("z"))
-            {
-                tabletalk.text = "You got water!";
-                water = true;
-                //add time to close the text
-            }
             if (Input.GetKeyDown("x"))
+            {
+                
+                //tabletalk.text = "You got water!";
+                water = true;
+                StartCoroutine(wait());
+                next ++;
+                //add time to close the text
+                //try corotine with " " ////
+            }
+            if (Input.GetKeyDown("c"))
             {
                 water = false;
                 next = 0;
@@ -51,6 +55,16 @@ public class table : MonoBehaviour
             next = 0;
 
         }
+    }
+
+    IEnumerator wait()
+    {
+        //tabletalk.text = "You got water!";
+        yield return new WaitForSecondsRealtime(0.1f);
+        tabletalk.text = "You got water!";
+        yield return new WaitForSecondsRealtime(2);
+        //next ++;
+        tabletalk.text = " ";
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -89,6 +103,8 @@ public class table : MonoBehaviour
     public void OnTriggerExit2D(Collider2D collision)
     {
         inTrigger = false;
+        tabletalk.text = " ";
+        next = 0 ;
 
         //Debug.Log("collision exit");
     }

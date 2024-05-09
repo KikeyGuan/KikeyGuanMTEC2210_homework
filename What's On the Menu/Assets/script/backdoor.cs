@@ -15,13 +15,14 @@ public class backdoor : MonoBehaviour
     public bool soul1;
     public bool soul2;
     public bool soul3;
-    public TextMeshPro bDoortalk;
-    public GameObject Text;
+    public TextMeshProUGUI bDoortalk;
     public int next = 0 ;
+    public bool inTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        //bDoortalk = Text.GetComponent<TextMeshProUGUI>();
         sus1 = GameObject.Find("Red").GetComponent<red>().sus;
         sus2 = GameObject.Find("Blue").GetComponent<blue>().sus;
         sus3 = GameObject.Find("pink").GetComponent<pink>().sus;
@@ -52,20 +53,14 @@ public class backdoor : MonoBehaviour
         if (soul3 == true){
             soulCollected++;
         }
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (Input.GetKeyDown("z") && inTrigger == true)
         {
-            Debug.Log("hit");
-            if (Input.GetKeyDown("z")){
-                next = next++;
-                Debug.Log(next);
-            }
-            if (next == 1){
+            next++;
+            //Debug.Log(next);
+        }
+        if (next == 1){
                 bDoortalk.text = "Go back? (game will end) ";
-                if (Input.GetKeyDown("z")){
+                if (Input.GetKeyDown("x")){
                     if (suspicousLevel == 3){
                         SceneManager.LoadScene("Died");
                         //goto killed
@@ -79,7 +74,56 @@ public class backdoor : MonoBehaviour
                         //goto eaten
                     }
                 }
+                if (Input.GetKeyDown("c")){
+                    bDoortalk.text = " ";
+                    next = 0;
+            }
+            
+        }
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            inTrigger = true;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        inTrigger = false;
+        bDoortalk.text = " ";
+        next = 0 ;
+
+    }
+/*
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Debug.Log("hit");
+            if (Input.GetKeyDown("z")){
+                next = next++;
+                Debug.Log(next);
+            }
+            if (next == 1){
+                bDoortalk.text = "Go back? (game will end) ";
                 if (Input.GetKeyDown("x")){
+                    if (suspicousLevel == 3){
+                        SceneManager.LoadScene("Died");
+                        //goto killed
+                    }
+                    if (soulCollected == 3){
+                        SceneManager.LoadScene("Surived");
+                        //goto Surived
+                    }
+                    if (soulCollected !=3){
+                        SceneManager.LoadScene("Eat");
+                        //goto eaten
+                    }
+                }
+                if (Input.GetKeyDown("c")){
                     bDoortalk.text = " ";
                     next = 0;
             }
@@ -88,4 +132,5 @@ public class backdoor : MonoBehaviour
     }
 
 }
+*/
 }

@@ -8,4 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Office.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Human.unity
+    guid: 0e6cdff0e0384bc48aa85a3f967f9d4a
+  - enabled: 1
+    path: Assets/Scenes/Eat.unity
+    guid: 7fe352f15422a984998fc3c9b010febb
+  - enabled: 1
+    path: Assets/Scenes/Died.unity
+    guid: a75bc3d2969b37e41b9687f47c74dafa
+  - enabled: 1
+    path: Assets/Scenes/Surived.unity
+    guid: 584a9375b80bbf643a3300fd9714f902
   m_configObjects: {}

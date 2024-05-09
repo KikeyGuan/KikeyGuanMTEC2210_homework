@@ -7,18 +7,19 @@ using UnityEngine.UI;
 
 public class pink : MonoBehaviour
 {
-    public TextMeshPro pinktalk;
+    public TextMeshProUGUI pinktalk;
     public GameObject Text;
     public SpriteRenderer sr;
     public BoxCollider2D box;
     public int next = 0;
     public bool sus = false;
     public bool soul = false;
+    public bool inTrigger;
     // Start is called before the first frame update
     void Start()
     {
         Text = GameObject.Find("Text");
-        pinktalk = Text.GetComponent<TextMeshPro>();
+        pinktalk = Text.GetComponent<TextMeshProUGUI>();
         sr = GetComponent<SpriteRenderer>();
         box = GetComponent<BoxCollider2D>();
         
@@ -27,9 +28,80 @@ public class pink : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("z") && inTrigger == true)
+        {
+            next++;
+            //Debug.Log(next);
+        }
+        if (next == 1){
+                pinktalk.text = "'HIHihi, new smell! barbark!'";
+            }
+            if (next == 2){
+                pinktalk.text = "Kidnap soul?";
+                if (Input.GetKeyDown("x")){
+                    pinktalk.text = "Rolling trust levels...";
+                    int Num = Random.Range(1,10);
+                    if(Num >=5){
+                        
+                        soul = true;
+                        StartCoroutine(wait7());
+                        Destroy(sr);
+                        Destroy(box);
+                        next = 0;
+                        //remove sprite, remove box collider
+                    }
+                    else{
+                        
+                        sus = false;
+                        StartCoroutine(wait8());
+                        Destroy(sr);
+                        Destroy(box);
+                        next = 0;
+                        //remove sprute and box collider
+                        //inscrese suspicous level
+                    }
+                }
+                if (Input.GetKeyDown("c")){
+                    next = 0;
+                    pinktalk.text = " ";
+                }
+            }
+
         
     }
 
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            inTrigger = true;
+        }
+    }
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        inTrigger = false;
+        pinktalk.text = " ";
+        next = 0 ;
+
+    }
+
+    IEnumerator wait7()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        pinktalk.text = "Soul adpoted!";
+        yield return new WaitForSecondsRealtime(2);
+        //next ++;
+        pinktalk.text = " ";
+    }
+    IEnumerator wait8()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        pinktalk.text = "'You're a bad person, wofwof.'";
+        yield return new WaitForSecondsRealtime(2);
+        //next ++;
+        pinktalk.text = " ";
+    }
+/*
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -74,4 +146,5 @@ public class pink : MonoBehaviour
             
         }
     }
+    */
 }
