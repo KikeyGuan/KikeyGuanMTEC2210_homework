@@ -10,6 +10,7 @@ public class playerMove : MonoBehaviour
     public float yMove;
     Rigidbody2D rb;
     public SpriteRenderer sr;
+    public Animator moving;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,8 @@ public class playerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        moving.SetFloat("yspeed", Mathf.Abs(yMove));
+        moving.SetFloat("xspeed", Mathf.Abs(xMove));
         xMove = Input.GetAxis("Horizontal")*speed*Time.deltaTime;
         yMove = Input.GetAxis("Vertical")*speed*Time.deltaTime;
         //Vector2 move = new Vector2(xMove,yMove);

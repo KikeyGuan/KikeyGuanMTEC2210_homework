@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 100239796}
   - component: {fileID: 100239795}
   - component: {fileID: 100239794}
+  - component: {fileID: 100239797}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -749,6 +750,28 @@ MonoBehaviour:
   xMove: 0
   yMove: 0
   sr: {fileID: 0}
+  moving: {fileID: 100239797}
+--- !u!95 &100239797
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100239791}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f7ca4c13e3c572469cb3892d37d1b44, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &114781290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1462,7 +1485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1509102761, guid: c31a8ad4802fbba4a8ee50eefa8f79d5, type: 3}
+  m_Sprite: {fileID: -1907109012, guid: 5ea32574857f1154da8e6387ecac138b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

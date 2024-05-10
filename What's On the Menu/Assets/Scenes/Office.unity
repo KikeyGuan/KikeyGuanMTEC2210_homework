@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 246902954}
   - component: {fileID: 246902958}
   - component: {fileID: 246902957}
+  - component: {fileID: 246902959}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -244,6 +245,7 @@ MonoBehaviour:
   xMove: 0
   yMove: 0
   sr: {fileID: 0}
+  moving: {fileID: 246902959}
 --- !u!212 &246902955
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -383,6 +385,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &246902959
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246902953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4413fe1f1d58148429ef22f2220efe0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &395563937
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1509102761, guid: c31a8ad4802fbba4a8ee50eefa8f79d5, type: 3}
+  m_Sprite: {fileID: -1907109012, guid: 5ea32574857f1154da8e6387ecac138b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
