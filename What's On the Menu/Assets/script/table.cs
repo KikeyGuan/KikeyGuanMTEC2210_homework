@@ -13,6 +13,7 @@ public class table : MonoBehaviour
     public int next = 0;
     public bool water = false;
     public bool inTrigger;
+    public Image box;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class table : MonoBehaviour
         }
         if (next == 1)
         {
+            box.enabled = true;
             tabletalk.text = "Take the water?";
             if (Input.GetKeyDown("x"))
             {
@@ -46,6 +48,7 @@ public class table : MonoBehaviour
                 water = false;
                 next = 0;
                 tabletalk.text = " ";
+                box.enabled = false;
             }
             
         }
@@ -53,6 +56,7 @@ public class table : MonoBehaviour
         {
             tabletalk.text = " ";
             next = 0;
+            box.enabled = false;
 
         }
     }
@@ -61,10 +65,12 @@ public class table : MonoBehaviour
     {
         //tabletalk.text = "You got water!";
         yield return new WaitForSecondsRealtime(0.1f);
+        box.enabled = true;
         tabletalk.text = "You got water!";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         tabletalk.text = " ";
+        box.enabled = false;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

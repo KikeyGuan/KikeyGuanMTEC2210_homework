@@ -18,6 +18,7 @@ public class backdoor : MonoBehaviour
     public TextMeshProUGUI bDoortalk;
     public int next = 0 ;
     public bool inTrigger;
+    public Image box;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,7 @@ public class backdoor : MonoBehaviour
             //Debug.Log(next);
         }
         if (next == 1){
+            box.enabled = true;
                 bDoortalk.text = "Go back? (game will end) ";
                 if (Input.GetKeyDown("x")){
                     if (suspicousLevel == 3){
@@ -77,9 +79,15 @@ public class backdoor : MonoBehaviour
                 if (Input.GetKeyDown("c")){
                     bDoortalk.text = " ";
                     next = 0;
+                    box.enabled = false;
             }
             
         }
+        if(next == 2){
+                bDoortalk.text = " ";
+                next = 0;
+                box.enabled = false;
+            }
 
     }
 
@@ -95,6 +103,7 @@ public class backdoor : MonoBehaviour
         inTrigger = false;
         bDoortalk.text = " ";
         next = 0 ;
+        box.enabled = false;
 
     }
 /*

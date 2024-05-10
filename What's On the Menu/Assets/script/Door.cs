@@ -12,6 +12,7 @@ public class Door : MonoBehaviour
     public GameObject Text;
     public int next = 0;
     public bool inTrigger;
+    public Image box;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class Door : MonoBehaviour
                 Debug.Log(next);
             }
             if (next == 1){
+                box.enabled = true;
                 doortalk.text = "There is a note on the door";
             }
             if (next == 2){
@@ -54,6 +56,7 @@ public class Door : MonoBehaviour
                 if (Input.GetKeyDown("c")){
                     doortalk.text = " ";
                     next = 0;
+                    box.enabled = false;
                 }
                 
             }
@@ -72,6 +75,7 @@ public class Door : MonoBehaviour
         inTrigger = false;
         doortalk.text = " ";
         next = 0 ;
+        box.enabled = false;
     }
 
     /*

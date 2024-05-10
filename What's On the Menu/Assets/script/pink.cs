@@ -15,6 +15,7 @@ public class pink : MonoBehaviour
     public bool sus = false;
     public bool soul = false;
     public bool inTrigger;
+    public Image Textbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,7 @@ public class pink : MonoBehaviour
             //Debug.Log(next);
         }
         if (next == 1){
+            Textbox.enabled = true;
                 pinktalk.text = "'HIHihi, new smell! barbark!'";
             }
             if (next == 2){
@@ -45,17 +47,17 @@ public class pink : MonoBehaviour
                         
                         soul = true;
                         StartCoroutine(wait7());
-                        Destroy(sr);
-                        Destroy(box);
+                        //Destroy(sr);
+                        //Destroy(box);
                         next = 0;
                         //remove sprite, remove box collider
                     }
                     else{
                         
-                        sus = false;
+                        sus = true;
                         StartCoroutine(wait8());
-                        Destroy(sr);
-                        Destroy(box);
+                        //Destroy(sr);
+                        //Destroy(box);
                         next = 0;
                         //remove sprute and box collider
                         //inscrese suspicous level
@@ -64,7 +66,13 @@ public class pink : MonoBehaviour
                 if (Input.GetKeyDown("c")){
                     next = 0;
                     pinktalk.text = " ";
+                    Textbox.enabled = false;
                 }
+            }
+            if(next == 3){
+                pinktalk.text = " ";
+                next = 0;
+                Textbox.enabled = false;
             }
 
         
@@ -82,24 +90,37 @@ public class pink : MonoBehaviour
         inTrigger = false;
         pinktalk.text = " ";
         next = 0 ;
+        Textbox.enabled = false;
 
     }
 
     IEnumerator wait7()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.1f);
+        Textbox.enabled = true;
+        pinktalk.text = "Rolling trust levels...";
+        yield return new WaitForSecondsRealtime(2);
         pinktalk.text = "Soul adpoted!";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         pinktalk.text = " ";
+        Textbox.enabled = false;
+        Destroy(sr);
+        Destroy(box);
     }
     IEnumerator wait8()
     {
+        yield return new WaitForSecondsRealtime(0.1f);
+        Textbox.enabled = true;
+        pinktalk.text = "Rolling trust levels...";
         yield return new WaitForSecondsRealtime(1);
         pinktalk.text = "'You're a bad person, wofwof.'";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         pinktalk.text = " ";
+        Textbox.enabled = false;
+        Destroy(sr);
+        Destroy(box);
     }
 /*
     public void OnTriggerStay2D(Collider2D collision)

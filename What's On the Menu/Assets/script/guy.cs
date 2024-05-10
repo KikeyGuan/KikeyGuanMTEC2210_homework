@@ -20,6 +20,7 @@ public class guy : MonoBehaviour
     public GameObject textBox;
     public GameObject table;
     public bool inTrigger;
+    public Image box;
 
     //talk =z, yes = x, no = c 
  
@@ -31,7 +32,10 @@ public class guy : MonoBehaviour
         table = GameObject.Find("table");
         guytalk = Text.GetComponent<TextMeshProUGUI>();
         //m_Image = GetComponent<Image>();
-        textBox = GameObject.Find("textbox");
+        textBox = GameObject.Find("textBox");
+        //box = GetComponent<Image>();
+        
+
     }
 
     // Update is called once per frame
@@ -47,6 +51,7 @@ public class guy : MonoBehaviour
 
         if (next == 1)
         {
+            box.enabled = true;
             //textBox = transform.Position(needs to be attached to camare)
             guytalk.text = "'w-waterr...'";
         }
@@ -60,6 +65,7 @@ public class guy : MonoBehaviour
             {
                 guytalk.text = " ";
                 next = 0;
+                box.enabled = false;
             }
         }
         if (next == 3)
@@ -83,6 +89,7 @@ public class guy : MonoBehaviour
         if (next == 4)
         {
             guytalk.text = " ";
+            box.enabled = false;
             next = 0;
         }
     }
@@ -100,6 +107,7 @@ public class guy : MonoBehaviour
         inTrigger = false;
         guytalk.text = " ";
         next = 0 ;
+        box.enabled = false;
 
         //Debug.Log("collision exit");
     }
@@ -108,19 +116,23 @@ public class guy : MonoBehaviour
     {
 
         yield return new WaitForSecondsRealtime(0.1f);
+        box.enabled = true;
         guytalk.text = "'Thankyou!'";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         guytalk.text = " ";
+        box.enabled = false;
     }
     IEnumerator wait2()
     {
 
         yield return new WaitForSecondsRealtime(0.1f);
+        box.enabled = true;
         guytalk.text = "OOhh noOo..";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         guytalk.text = " ";
+        box.enabled = false;
     }
 
     /*

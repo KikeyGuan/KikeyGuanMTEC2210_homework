@@ -7,39 +7,40 @@ using UnityEngine.UI;
 
 public class eaten : MonoBehaviour
 {
-    public TextMeshPro eattalk;
-    public GameObject Text;
+    public TextMeshProUGUI eattalk;
+    //public GameObject Text;
     public int next = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Text = GameObject.Find("Text");
-        eattalk = Text.GetComponent<TextMeshPro>();
+        //Text = GameObject.Find("Text");
+        //eattalk = Text.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(next);
         if (Input.GetKeyDown("z")){
-                next = next++;
+                next++;
                 //Debug.Log(next);
             }
-        if (next == 1){
+        if (next == 0){
             eattalk.text = "You go back to the underworld.";
         }
-        if (next == 2){
+        if (next == 1){
             eattalk.text = "Your pockets are light but your heart heavy.";
         }
-        if (next == 3){
+        if (next == 2){
             eattalk.text = "You know what's coming.";
         }
-        if (next == 4){
+        if (next == 3){
             eattalk.text = "Hiding is no use.";
         }
-        if (next == 5){
+        if (next == 4){
             eattalk.text = "Held by one hand you hear a crunch.";
         }
-        if (next == 6){
+        if (next == 5){
             eattalk.text = "Game Over, you were a delicious meal";
         }
 

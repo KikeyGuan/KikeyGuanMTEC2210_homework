@@ -8,12 +8,12 @@ using UnityEngine.UI;
 public class surived : MonoBehaviour
 {
     public TextMeshProUGUI surtalk;
-    public GameObject Text;
+    //public GameObject Text;
     public int next = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Text = GameObject.Find("Text");
+        //Text = GameObject.Find("Text");
         //surtalk = Text.GetComponent<TextMeshProUGUI>();
     }
 
@@ -21,22 +21,22 @@ public class surived : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("z")){
-                next = next++;
+                next++;
                 //Debug.Log(next);
             }
-        if (next == 1){
+        if (next == 0){
             surtalk.text = "You go back to the underworld.";
         }
-        if (next == 2){
+        if (next == 1){
             surtalk.text = "Your bag heavy and full.";
         }
-        if (next == 3){
+        if (next == 2){
             surtalk.text = "You combine the souls together, mixing all the flavors.";
         }
-        if (next == 4){
+        if (next == 3){
             surtalk.text = "You serve it to your boss and they were delighted!";
         }
-        if (next == 5){
+        if (next == 4){
             surtalk.text = "You survied another day! Until the next meal.";
         }
     }

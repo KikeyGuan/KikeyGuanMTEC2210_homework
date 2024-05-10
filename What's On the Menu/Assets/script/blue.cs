@@ -15,6 +15,7 @@ public class blue : MonoBehaviour
     public bool sus = false;
     public bool soul = false;
     public bool inTrigger;
+    public Image Textbox;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,7 @@ public class blue : MonoBehaviour
             //Debug.Log(next);
         }
         if (next == 1){
+            Textbox.enabled = true;
                 bluetalk.text = "'Hello there! Are you visitng?'";
             }
             if (next == 2){
@@ -44,15 +46,15 @@ public class blue : MonoBehaviour
             }
             if (next == 4){
                 bluetalk.text = "Take soul?";
-                if (Input.GetKeyDown("z")){
-                    bluetalk.text = "Rolling tasty death...";
+                if (Input.GetKeyDown("x")){
+                    //bluetalk.text = "Rolling tasty death...";
                     int Num = Random.Range(1,10);
                     if(Num >=5){
                         
                         soul = true;
                         StartCoroutine(wait5());
-                        Destroy(sr);
-                        Destroy(box);
+                        //Destroy(sr);
+                        //Destroy(box);
                         next = 0 ;
                         //remove sprite, remove box collider
                     }
@@ -60,17 +62,23 @@ public class blue : MonoBehaviour
                         
                         sus = true;
                         StartCoroutine(wait6());
-                        Destroy(sr);
-                        Destroy(box);
+                        //Destroy(sr);
+                        //Destroy(box);
                         next = 0 ;
                         //remove sprute and box collider
                         //inscrese suspicous level
                     }
                 }
-                if (Input.GetKeyDown("x")){
+                if (Input.GetKeyDown("c")){
                     next = 0;
                     bluetalk.text = " ";
+                    Textbox.enabled = false;
                 }
+            }
+            if(next == 5){
+                bluetalk.text = " ";
+                next = 0;
+                Textbox.enabled = false;
             }
         
     }
@@ -87,24 +95,37 @@ public class blue : MonoBehaviour
         inTrigger = false;
         bluetalk.text = " ";
         next = 0 ;
+        Textbox.enabled = false;
 
     }
 
     IEnumerator wait5()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.1f);
+        Textbox.enabled = true;
+        bluetalk.text = "Rolling tasty death...";
+        yield return new WaitForSecondsRealtime(2);
         bluetalk.text = "Soul harvested!";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         bluetalk.text = " ";
+        Textbox.enabled = false;
+        Destroy(sr);
+        Destroy(box);
     }
     IEnumerator wait6()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(0.1f);
+        Textbox.enabled = true;
+        bluetalk.text = "Rolling tasty death...";
+        yield return new WaitForSecondsRealtime(2);
         bluetalk.text = "'You did not just! You're dangerous.'";
         yield return new WaitForSecondsRealtime(2);
         //next ++;
         bluetalk.text = " ";
+        Textbox.enabled = false;
+        Destroy(sr);
+        Destroy(box);
     }
 /*
     public void OnTriggerStay2D(Collider2D collision)

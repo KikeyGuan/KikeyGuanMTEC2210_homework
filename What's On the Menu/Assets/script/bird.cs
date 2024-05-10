@@ -13,6 +13,7 @@ public class bird : MonoBehaviour
     public BoxCollider2D box;
     public int next = 0;
     public bool inTrigger;
+    public Image Textbox;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class bird : MonoBehaviour
             //Debug.Log(next);
         }
         if (next == 1){
+            Textbox.enabled = true;
                 birdtalk.text = "'Oh a new face. you traveling?'";
             }
             if (next == 2){
@@ -45,6 +47,7 @@ public class bird : MonoBehaviour
             if (next == 5){
                 birdtalk.text = " ";
                 next =0;
+                Textbox.enabled = false;
             }    
         
     }
